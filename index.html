@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>History&pjax demo</title>
+</head>
+
+<body>
+    <h1>History & pjax demo</h1>
+    <hr>
+    <h2>1. 测试 back() 和 forward()</h2>
+    <p><a href="2.html">我们先手动跳转到 2.html</a></p>
+    <button id="back">back</button>
+    <button id="forward">forward</button>
+    <button id="go0">go(0)</button>
+    <button id="go1">go(1)</button>
+    <button id="go2">go(2)</button>
+    <p>history.length: <span id="length"></span></p>
+    <script type="text/javascript">
+    document.querySelector('#length').innerHTML = history.length;
+    
+    document.querySelector('#back').addEventListener('click', function() {
+        history.back();
+    });
+
+    document.querySelector('#forward').addEventListener('click', function() {
+        history.forward();
+    });
+    document.querySelector('#go0').addEventListener('click', function() {
+        history.go(0);
+        // history.go();
+    });
+    document.querySelector('#go1').addEventListener('click', function() {
+        history.go(1);
+    });
+    document.querySelector('#go2').addEventListener('click', function() {
+        history.go(2);
+    });
+    </script>
+</body>
+
+</html>

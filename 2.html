@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Page 2</title>
+</head>
+
+<body>
+    <h1>测试 back() 和 forward()</h1>
+    <p>
+    <a href="http://w3school.com.cn/js/js_window_history.asp">JavaScript Window History-w3school</a></p>
+    <p>
+    <a target="_blank" href="http://w3school.com.cn/js/js_window_history.asp">JavaScript Window History-w3school in new tab</a></p>
+    <button id="back">back</button>
+    <button id="forward">forward</button>
+    <button id="go-1">go(-1)</button>
+    <button id="go1">go(1)</button>
+    <p>history.length: <span id="length"></span></p>
+    <script type="text/javascript">
+    document.querySelector('#length').innerHTML = history.length;
+    document.querySelector('#back').addEventListener('click', function() {
+        history.back();
+    });
+    document.querySelector('#forward').addEventListener('click', function() {
+        history.forward();
+    });
+    document.querySelector('#go-1').addEventListener('click', function() {
+        history.go(-1);
+    });
+    document.querySelector('#go1').addEventListener('click',function() {
+        history.go(1);
+    });
+    </script>
+</body>
+
+</html>
