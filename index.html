@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=3, minimum-scale=1, user-scalable=no">
     <title>History&pjax demo</title>
 </head>
 
@@ -13,19 +14,24 @@
     <p><a href="2.html">我们先手动跳转到 2.html</a></p>
     <button id="back">back</button>
     <button id="forward">forward</button>
+    <button id="go-1">go(-1)</button>
     <button id="go0">go(0)</button>
     <button id="go1">go(1)</button>
     <button id="go2">go(2)</button>
     <p>history.length: <span id="length"></span></p>
     <script type="text/javascript">
     document.querySelector('#length').innerHTML = history.length;
-    
+
     document.querySelector('#back').addEventListener('click', function() {
         history.back();
     });
 
     document.querySelector('#forward').addEventListener('click', function() {
         history.forward();
+    });
+    document.querySelector('#go-1').addEventListener('click', function() {
+        history.go(-1);
+        // history.go();
     });
     document.querySelector('#go0').addEventListener('click', function() {
         history.go(0);
