@@ -5,12 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=3, minimum-scale=1, user-scalable=no">
     <title>History&pjax demo</title>
+    <style>
+        body{
+            min-height: 1000px;
+        }
+    </style>
 </head>
 
 <body>
     <h1>History & pjax demo</h1>
     <hr>
-    <h2>1. 测试 back() 和 forward()</h2>
+    <h2>1. 测试 back(), forward(), go(), length</h2>
     <p><a href="2.html">我们先手动跳转到 2.html</a></p>
     <button id="back">back</button>
     <button id="forward">forward</button>
@@ -19,6 +24,9 @@
     <button id="go1">go(1)</button>
     <button id="go2">go(2)</button>
     <p>history.length: <span id="length"></span></p>
+    <h2 id="pushState">2. 测试 pushState(), replaceState()</h2>
+    <button id="push1">pushState()</button>
+    <button id="replace">replaceState()</button>
     <script type="text/javascript">
     document.querySelector('#length').innerHTML = history.length;
 
@@ -31,7 +39,6 @@
     });
     document.querySelector('#go-1').addEventListener('click', function() {
         history.go(-1);
-        // history.go();
     });
     document.querySelector('#go0').addEventListener('click', function() {
         history.go(0);
@@ -42,6 +49,19 @@
     });
     document.querySelector('#go2').addEventListener('click', function() {
         history.go(2);
+    });
+
+    //////////////////////////////////////////
+    //------------cut line----------------- //
+    //////////////////////////////////////////
+
+    document.querySelector('#push1').addEventListener('click', function() {
+        history.pushState('abc','pushStatePageTitle','pushState.html');
+        document.querySelector('#length').innerHTML = history.length;//重新读取历史长度
+    });
+    document.querySelector('#replace').addEventListener('click', function() {
+        history.replaceState('abc2','replaceStatePageTitle','replaceState.html');
+        document.querySelector('#length').innerHTML = history.length;
     });
     </script>
 </body>
