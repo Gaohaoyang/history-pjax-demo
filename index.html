@@ -4,16 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=3, minimum-scale=1, user-scalable=no">
-    <title>History&pjax demo</title>
+    <title>History API demo</title>
     <style>
-        body{
-            min-height: 1000px;
-        }
+    body {
+        min-height: 1000px;
+    }
     </style>
 </head>
 
 <body>
-    <h1>History & pjax demo</h1>
+    <h1>History API demo</h1>
     <hr>
     <h2>1. 测试 back(), forward(), go(), length</h2>
     <p><a href="2.html">我们先手动跳转到 2.html</a></p>
@@ -27,13 +27,14 @@
     <h2 id="pushState">2. 测试 pushState(), replaceState()</h2>
     <button id="push1">pushState()</button>
     <button id="replace">replaceState()</button>
+    <h2>3. 监听 window.onpopstate 事件</h2>
+    <p>state: <span id="state"></span></p>
+    <p>location: <span id="location"></span></p>
     <script type="text/javascript">
     document.querySelector('#length').innerHTML = history.length;
-
     document.querySelector('#back').addEventListener('click', function() {
         history.back();
     });
-
     document.querySelector('#forward').addEventListener('click', function() {
         history.forward();
     });
@@ -54,15 +55,28 @@
     //////////////////////////////////////////
     //------------cut line----------------- //
     //////////////////////////////////////////
-
+    ///
     document.querySelector('#push1').addEventListener('click', function() {
-        history.pushState('abc','pushStatePageTitle','pushState.html');
-        document.querySelector('#length').innerHTML = history.length;//重新读取历史长度
+        history.pushState('abc', 'pushStatePageTitle', 'pushState.html');
+        document.querySelector('#length').innerHTML = history.length; //重新读取历史长度
     });
     document.querySelector('#replace').addEventListener('click', function() {
-        history.replaceState('abc2','replaceStatePageTitle','replaceState.html');
+        history.replaceState('abc2', 'replaceStatePageTitle', 'replaceState.html');
         document.querySelector('#length').innerHTML = history.length;
     });
+
+    //////////////////////////////////////////
+    //------------cut line----------------- //
+    //////////////////////////////////////////
+    
+    window.onpopstate = function(event) {
+        document.querySelector('#state').innerHTML = event.state;
+        document.querySelector('#location').innerHTML = location;
+    };
+    window.onpopstate = function(event) {
+        console.log(event.state);
+        console.log(location);
+    };
     </script>
 </body>
 
